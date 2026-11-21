@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pro Loco Cavaglio d'Agogna APS | Feste, Comunità e Territorio</title>
+  <meta name="description" content="Sito ufficiale della Pro Loco Cavaglio d'Agogna APS (NO). Eventi, sagre, menù Oktoberfest, rubriche culturali, archivio foto e servizi del paese." />
+  <link rel="canonical" href="https://www.prolococavaglio.it/" />
+
+  <!-- Open Graph / Meta Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Pro Loco Cavaglio d'Agogna APS | Feste, Comunità e Territorio" />
+  <meta property="og:description" content="Tutte le iniziative, gli eventi e la vita comunitaria di Cavaglio d'Agogna nelle Colline Novaresi." />
+  <meta property="og:url" content="https://www.prolococavaglio.it/" />
+  <meta property="og:image" content="https://lh3.googleusercontent.com/d/1KsSSRrp4w9_7nZHKhehqGKGcX9z4uw6u=w1200" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:site_name" content="Pro Loco Cavaglio d'Agogna APS" />
+
+  <!-- Preload Immagine Panoramica Hero -->
+  <link rel="preload" as="image" href="https://lh3.googleusercontent.com/d/1KsSSRrp4w9_7nZHKhehqGKGcX9z4uw6u=w1400" />
+
+  <!-- Tailwind CSS & Font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            hill: { DEFAULT: '#6EB34E', dark: '#4F8F33', light: '#E7F5E0' },
+            cobalt: { DEFAULT: '#2A4BFF', dark: '#1D37CC', light: '#E8EDFF' },
+            sun: { DEFAULT: '#FFD426', dark: '#E5B800', light: '#FFF8D6' },
+            coral: { DEFAULT: '#FF5A26', dark: '#E04312', light: '#FFE8E0' },
+            paper: { DEFAULT: '#F4F4F1', dark: '#E8E8E3' },
+            ink: { DEFAULT: '#18191C', soft: '#3A3D45' }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Anton"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Dati Strutturati Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.prolococavaglio.it/#organization",
+        "name": "Pro Loco Cavaglio d'Agogna APS",
+        "url": "https://www.prolococavaglio.it/",
+        "logo": "https://lh3.googleusercontent.com/d/1KsSSRrp4w9_7nZHKhehqGKGcX9z4uw6u=w500",
+        "email": "proloco.cavaglio@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Via Cavaglietto",
+          "addressLocality": "Cavaglio d'Agogna",
+          "postalCode": "28010",
+          "addressRegion": "NO",
+          "addressCountry": "IT"
+        },
+        "taxID": "91004540034",
+        "vatID": "01501400038"
+      },
+      {
+        "@type": "Event",
+        "name": "Gita a Carrù",
+        "startDate": "2026-11-29T07:45:00+01:00",
+        "endDate": "2026-11-29T19:00:00+01:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Piazza del Peso Pubblico",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Cavaglio d'Agogna",
+            "postalCode": "28010",
+            "addressRegion": "NO",
+            "addressCountry": "IT"
+          }
+        },
+        "image": "https://lh3.googleusercontent.com/d/1KVyBhwV7JGch7R4_ysFEVZUoenLvQJXy=w900",
+        "description": "Giornata tra le Langhe e pranzo al Bue Grasso di Carrù con la Pro Loco.",
+        "offers": {
+          "@type": "Offer",
+          "price": "69.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/SoldOut"
+        },
+        "organizer": {
+          "@id": "https://www.prolococavaglio.it/#organization"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body data-page="home" class="min-h-screen flex flex-col antialiased selection:bg-sun selection:text-ink">
+
+  <!-- BARRA LIVE NEWS & HEADER AUTOMATICI -->
+  <div id="site-live-bar"></div>
+  <header id="site-header"></header>
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <main class="flex-grow w-full">
+
+    <!-- HERO SPLIT 50/50 -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-8 sm:pt-10 sm:pb-10">
+      <div class="bg-white rounded-[2rem] overflow-hidden border border-ink/10 shadow-xl grid grid-cols-1 lg:grid-cols-12">
+        <!-- Colonna Sinistra: Panorama di Cavaglio d'Agogna con contrasto editoriale -->
+        <div class="lg:col-span-6 p-6 sm:p-10 lg:p-12 flex flex-col justify-between relative overflow-hidden bg-ink text-white min-h-[440px]">
+          <img
+            src="https://lh3.googleusercontent.com/d/1KsSSRrp4w9_7nZHKhehqGKGcX9z4uw6u=w1400"
+            onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://drive.google.com/thumbnail?id=1KsSSRrp4w9_7nZHKhehqGKGcX9z4uw6u&sz=w1600';}else{this.style.display='none';}"
+            alt="Panorama di Cavaglio d'Agogna (NO)"
+            class="absolute inset-0 w-full h-full object-cover object-center scale-[1.01]"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/65 to-ink/50 pointer-events-none"></div>
+
+          <div class="relative z-10 flex flex-wrap items-center justify-between gap-2 mb-6">
+            <span class="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-white bg-black/40 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-white/15">
+              <span class="w-2.5 h-2.5 rounded-full bg-hill"></span>
+              Cavaglio d'Agogna (NO)
+            </span>
+            <span class="sticker-badge -rotate-2 bg-coral text-white text-[11px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider">
+              Associazione APS
+            </span>
+          </div>
+
+          <div class="relative z-10 my-2">
+            <h1 class="font-display text-4xl sm:text-5xl xl:text-[58px] uppercase text-white leading-[1.08] tracking-tight break-words drop-shadow-sm">
+              <span class="block">TRADIZIONI & FESTE</span>
+              <span class="block mt-1.5">
+                CON <span class="hl-tag bg-coral text-white shadow">SAPORI TIPICI</span>
+              </span>
+              <span class="block mt-1.5">
+                <span class="hl-tag bg-sun text-ink shadow">VINI DELLE COLLINE</span>
+              </span>
+              <span class="block mt-1.5">
+                <span class="hl-tag bg-cobalt text-white shadow">VIVI IL PAESE</span>
+              </span>
+            </h1>
+          </div>
+
+          <div class="relative z-10 mt-8 pt-6 border-t border-white/20 flex flex-col sm:flex-row sm:items-end justify-between gap-5">
+            <p class="text-sm text-white/95 font-medium leading-relaxed max-w-md drop-shadow-sm">
+              Il punto d'incontro per chi ama <strong>Cavaglio d'Agogna</strong>: iniziative popolari, sagre, rubriche locali e momenti da vivere insieme tutto l'anno.
+            </p>
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="sticker-badge rotate-2 bg-sun text-ink text-xs font-extrabold uppercase px-3.5 py-2 rounded-2xl text-center leading-tight">
+                Colline<br>Novaresi
+              </span>
+              <span class="sticker-badge -rotate-2 bg-hill text-white text-xs font-extrabold uppercase px-3.5 py-2 rounded-2xl text-center leading-tight">
+                Città<br>del Vino
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonna Destra: Evento in Primo Piano (Gita a Carrù - SOLD OUT) -->
+        <div class="lg:col-span-6 bg-gradient-to-br from-[#233D2C] via-[#2F593D] to-[#18191C] text-white p-6 sm:p-10 relative overflow-hidden flex flex-col justify-between min-h-[440px]">
+          <div class="relative z-10 flex flex-wrap items-center justify-between gap-2">
+            <span class="bg-[#DC2626] text-white text-xs font-extrabold uppercase px-3.5 py-1.5 rounded-full tracking-wider shadow">
+              Sold Out • Posti Terminati
+            </span>
+            <div class="bg-ink/65 backdrop-blur-md border border-white/15 px-3.5 py-1.5 rounded-full text-xs font-extrabold text-sun tabular-nums">
+              Partenza: <span id="hero-countdown">--g --h --m</span>
+            </div>
+          </div>
+
+          <div class="relative z-10 my-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-5 sm:p-7 space-y-3">
+            <div class="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wider text-sun tabular-nums">
+              <span>Domenica 29 Novembre 2026</span>
+              <span>•</span>
+              <span>Ritrovo ore 7:45</span>
+            </div>
+            <h2 class="font-display text-3xl sm:text-5xl uppercase tracking-wide text-white leading-none">
+              GITA A CARRÙ
+            </h2>
+            <p class="text-sm text-white/90 leading-relaxed">
+              Una giornata tra le Langhe: pranzo al ristorante <strong>“Al Bue Grasso”</strong> e tempo libero con possibilità di visita al Castello di Grinzane Cavour e dintorni.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-1 tabular-nums">
+              <span class="bg-white/15 px-3 py-1 rounded-full text-xs font-bold">Quota: 69,00 € (Bambini 39,00 €)</span>
+              <span class="bg-[#DC2626] text-white px-3 py-1 rounded-full text-xs font-extrabold uppercase">Posti Esauriti</span>
+            </div>
+          </div>
+
+          <div class="relative z-10 flex flex-wrap items-center gap-2.5">
+            <button disabled class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-[#DC2626] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wide px-5 py-3.5 rounded-full shadow-lg cursor-not-allowed opacity-95">
+              SOLD OUT – Posti Terminati
+            </button>
+            <button onclick="window.openEventDetail('carru-2026')" class="btn-press inline-flex items-center justify-center bg-white hover:bg-sun text-ink font-extrabold text-xs sm:text-sm uppercase tracking-wide px-5 py-3.5 rounded-full transition">
+              Programma & Menù
+            </button>
+            <button onclick="window.downloadPoster('carru-2026')" class="btn-press inline-flex items-center justify-center gap-1.5 bg-sun hover:bg-sun-dark text-ink font-extrabold text-xs uppercase tracking-wide px-4 py-3.5 rounded-full transition" title="Scarica Locandina Ufficiale">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Locandina
+            </button>
+            <button onclick="window.shareEvent('carru-2026')" class="btn-press p-3.5 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/20 transition" title="Condividi evento">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WIDGET METEO LIVE (CORRETTO OPEN-METEO) & ACCESSO CAVAGLIO UTILE -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pb-12 sm:pb-14">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+        <!-- Widget Meteo in Tempo Reale -->
+        <div class="lg:col-span-7 bg-white rounded-3xl p-5 sm:p-6 border border-ink/10 shadow-sm flex flex-col justify-between gap-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 bg-cobalt-light text-cobalt text-[11px] font-extrabold uppercase px-3 py-1 rounded-full">
+                <span class="w-2 h-2 rounded-full bg-cobalt"></span>
+                Meteo Cavaglio d'Agogna
+              </span>
+              <span id="weather-updated" class="text-[11px] font-semibold text-ink/50 tabular-nums">Live • Colline Novaresi</span>
+            </div>
+            <span class="text-[11px] font-extrabold uppercase tracking-wider text-ink/50">Oggi & Weekend</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center tabular-nums">
+            <div class="sm:col-span-5 bg-paper rounded-2xl p-4 border border-ink/10 flex items-center gap-3.5">
+              <div id="weather-now-icon" class="text-4xl leading-none select-none">⛅</div>
+              <div>
+                <div class="flex items-baseline gap-1.5">
+                  <span id="weather-now-temp" class="font-display text-4xl text-ink">--°</span>
+                  <span class="text-xs font-bold text-ink/60">adesso</span>
+                </div>
+                <p id="weather-now-desc" class="text-xs font-extrabold text-cobalt mt-0.5">Caricamento meteo...</p>
+                <p id="weather-now-extra" class="text-[11px] text-ink/65 mt-0.5">Vento -- km/h • Umidità --%</p>
+              </div>
+            </div>
+
+            <div id="weather-weekend-grid" class="sm:col-span-7 grid grid-cols-2 gap-3">
+              <div class="bg-paper rounded-2xl p-3.5 border border-ink/10">
+                <span class="block text-[10px] font-extrabold uppercase text-ink/50">Sabato</span>
+                <div class="flex items-center justify-between mt-1">
+                  <span class="text-2xl">☀️</span>
+                  <span class="font-display text-xl text-ink">--° / --°</span>
+                </div>
+                <span class="block text-[11px] font-semibold text-ink/70 mt-1">Tendenza weekend</span>
+              </div>
+              <div class="bg-paper rounded-2xl p-3.5 border border-ink/10">
+                <span class="block text-[10px] font-extrabold uppercase text-ink/50">Domenica</span>
+                <div class="flex items-center justify-between mt-1">
+                  <span class="text-2xl">⛅</span>
+                  <span class="font-display text-xl text-ink">--° / --°</span>
+                </div>
+                <span class="block text-[11px] font-semibold text-ink/70 mt-1">Tendenza weekend</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bacheca Cavaglio Utile -->
+        <div class="lg:col-span-5 bg-hill text-ink rounded-3xl p-5 sm:p-6 border border-ink/10 shadow-sm flex flex-col justify-between gap-4">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <span class="inline-block bg-ink text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full mb-1.5">
+                Bacheca Pratica
+              </span>
+              <h2 class="font-display text-3xl uppercase text-ink leading-none">CAVAGLIO UTILE</h2>
+            </div>
+            <a href="cavaglio-utile.html" class="btn-press bg-white hover:bg-sun text-ink font-extrabold text-xs uppercase px-3.5 py-2 rounded-full shadow-sm transition shrink-0">
+              Apri Bacheca →
+            </a>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 text-left">
+            <a href="cavaglio-utile.html#farmacie" class="btn-press bg-white/95 hover:bg-white rounded-2xl p-3 border border-ink/10 transition flex flex-col justify-between">
+              <span class="text-xl">💊</span>
+              <span class="text-[11px] font-extrabold text-ink leading-tight mt-2">Farmacie di Turno</span>
+            </a>
+            <a href="cavaglio-utile.html#rifiuti" class="btn-press bg-white/95 hover:bg-white rounded-2xl p-3 border border-ink/10 transition flex flex-col justify-between">
+              <span class="text-xl">♻️</span>
+              <span class="text-[11px] font-extrabold text-ink leading-tight mt-2">Raccolta Rifiuti</span>
+            </a>
+            <a href="cavaglio-utile.html#emergenze" class="btn-press bg-white/95 hover:bg-white rounded-2xl p-3 border border-ink/10 transition flex flex-col justify-between">
+              <span class="text-xl">📞</span>
+              <span class="text-[11px] font-extrabold text-ink leading-tight mt-2">Numeri Utili</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEZIONE BLU COBALTO: PROSSIMI APPUNTAMENTI (CARICATI DA data/eventi.js) -->
+    <div class="w-full bg-cobalt py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+          <div>
+            <span class="inline-block bg-sun text-ink text-xs font-extrabold uppercase px-3 py-1 rounded-full mb-2 tabular-nums">
+              In Evidenza • Stagione 2026
+            </span>
+            <h2 class="font-display text-4xl sm:text-6xl uppercase text-white tracking-wide leading-none">
+              PROSSIMI APPUNTAMENTI
+            </h2>
+          </div>
+          <a href="eventi.html" class="btn-press inline-flex items-center gap-2 bg-white hover:bg-sun text-ink font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 py-3 rounded-full shadow transition self-start sm:self-auto tabular-nums">
+            Tutti i 18 Eventi (2025–2026) →
+          </a>
+        </div>
+
+        <!-- Griglia primi 3 eventi (popolata da events.js) -->
+        <div id="home-events-grid" class="grid grid-cols-1 md:grid-cols-3 gap-7 pb-4"></div>
+      </div>
+    </div>
+
+    <!-- RUBRICHE DEL PAESE IN VETRINA -->
+    <div class="w-full bg-paper py-16 sm:py-20 px-4 sm:px-6 border-t border-ink/10">
+      <div class="max-w-7xl mx-auto space-y-10">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span class="inline-block bg-coral text-white text-xs font-extrabold uppercase px-3 py-1 rounded-full mb-2">
+              Cultura, Cucina & Memoria
+            </span>
+            <h2 class="font-display text-4xl sm:text-6xl uppercase text-ink tracking-wide leading-none">
+              LE RUBRICHE DI CAVAGLIO
+            </h2>
+          </div>
+          <a href="rubriche.html" class="btn-press inline-flex items-center gap-2 bg-ink hover:bg-cobalt text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 py-3.5 rounded-full shadow transition self-start sm:self-auto">
+            Sfoglia il Gazzettino Completo →
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Card 1: A Tavola -->
+          <article class="bg-white rounded-3xl p-6 border border-ink/10 shadow-sm flex flex-col justify-between gap-5">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <span class="sticker-badge -rotate-1 bg-coral text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+                  Cucina & Sommelier
+                </span>
+                <span class="text-xs font-extrabold text-ink/50">Mese in corso</span>
+              </div>
+              <h3 class="font-display text-3xl uppercase text-ink leading-tight">A Tavola con la Pro Loco</h3>
+              <p class="text-xs sm:text-sm text-ink/75 leading-relaxed">
+                La ricetta del Cuoco: <strong>Paniscia Novarese della Tradizione</strong> con riso Carnaroli, verza brinata e salam d'la duja, in abbinamento al <strong>Ghemme DOCG & Vespolina</strong> consigliati dalla Sommelier.
+              </p>
+            </div>
+            <a href="rubriche.html#cucina" class="btn-press w-full bg-sun hover:bg-sun-dark text-ink font-extrabold text-xs uppercase tracking-wider py-3.5 px-4 rounded-full transition text-center block">
+              Leggi Ricetta & Abbinamento Vino →
+            </a>
+          </article>
+
+          <!-- Card 2: Storia e Cultura -->
+          <article class="bg-white rounded-3xl p-6 border border-ink/10 shadow-sm flex flex-col justify-between gap-5">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <span class="sticker-badge rotate-1 bg-cobalt text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+                  Memoria & Dialetto
+                </span>
+                <span class="text-xs font-extrabold text-ink/50">Uscita settimanale</span>
+              </div>
+              <h3 class="font-display text-3xl uppercase text-ink leading-tight">Storia e Cultura</h3>
+              <p class="text-xs sm:text-sm text-ink/75 leading-relaxed">
+                Le usanze contadine tra i filari dell'Agogna, la tradizione della <em>brena</em> e la pillola di dialetto: <em>“Chi ga 'l vin bon in cà, tuti i amis i ghe van a truvà”</em>.
+              </p>
+            </div>
+            <a href="rubriche.html#storia" class="btn-press w-full bg-cobalt hover:bg-cobalt-dark text-white font-extrabold text-xs uppercase tracking-wider py-3.5 px-4 rounded-full transition text-center block">
+              Scopri le Pillole Storiche →
+            </a>
+          </article>
+
+          <!-- Card 3: La Foto del Mese -->
+          <article class="bg-white rounded-3xl p-6 border border-ink/10 shadow-sm flex flex-col justify-between gap-5">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <span class="sticker-badge -rotate-1 bg-hill text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+                  Scatto dei Cittadini
+                </span>
+                <span class="text-xs font-extrabold text-ink/50">Partecipa via email</span>
+              </div>
+              <h3 class="font-display text-3xl uppercase text-ink leading-tight">La Foto del Mese</h3>
+              <p class="text-xs sm:text-sm text-ink/75 leading-relaxed">
+                Lo scorcio più suggestivo scelto tra quelli inviati dagli abitanti. Invia anche tu la tua fotografia di Cavaglio d'Agogna via email per vederla pubblicata sul sito!
+              </p>
+            </div>
+            <a href="rubriche.html#fotodelmese" class="btn-press w-full bg-hill hover:bg-hill-dark text-white font-extrabold text-xs uppercase tracking-wider py-3.5 px-4 rounded-full transition text-center block">
+              Guarda lo Scatto & Invia la Tua Foto →
+            </a>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 BLOCCHI RAPIDI: MENÙ OKTOBERFEST & I 3 ALBUM FOTO DRIVE -->
+    <div class="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 border-t border-ink/10">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="menu.html" class="btn-press group text-left rounded-3xl p-6 bg-gradient-to-br from-[#1B4965] to-cobalt text-white flex flex-col justify-between min-h-[190px] shadow-md hover:-translate-y-1 transition">
+            <span class="sticker-badge -rotate-2 self-start bg-sun text-ink text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+              Listino Ufficiale
+            </span>
+            <div>
+              <h3 class="font-display text-2xl uppercase">Menù Oktoberfest 2026</h3>
+              <p class="text-xs text-white/90 mt-1">Cucina, birre alla spina e codice cassa →</p>
+            </div>
+          </a>
+
+          <a href="foto.html?album=castagnata-2026" class="btn-press group text-left rounded-3xl p-6 bg-gradient-to-br from-[#6B2A14] to-coral text-white flex flex-col justify-between min-h-[190px] shadow-md hover:-translate-y-1 transition">
+            <span class="sticker-badge rotate-2 self-start bg-sun text-ink text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+              39 Fotografie
+            </span>
+            <div>
+              <h3 class="font-display text-2xl uppercase tabular-nums">Castagnata 2026</h3>
+              <p class="text-xs text-white/90 mt-1">Galleria nativa e Lightbox full-screen →</p>
+            </div>
+          </a>
+
+          <a href="foto.html?album=oktoberfest-2026" class="btn-press group text-left rounded-3xl p-6 bg-gradient-to-br from-[#1B4965] to-cobalt text-white flex flex-col justify-between min-h-[190px] shadow-md hover:-translate-y-1 transition">
+            <span class="sticker-badge -rotate-2 self-start bg-white text-ink text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+              79 Fotografie
+            </span>
+            <div>
+              <h3 class="font-display text-2xl uppercase tabular-nums">Oktoberfest 2026</h3>
+              <p class="text-xs text-white/90 mt-1">Galleria nativa e Lightbox full-screen →</p>
+            </div>
+          </a>
+
+          <a href="foto.html?album=cavaglio-stelle-2026" class="btn-press group text-left rounded-3xl p-6 bg-gradient-to-br from-[#1D37CC] to-hill-dark text-white flex flex-col justify-between min-h-[190px] shadow-md hover:-translate-y-1 transition">
+            <span class="sticker-badge rotate-2 self-start bg-sun text-ink text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+              789 Fotografie
+            </span>
+            <div>
+              <h3 class="font-display text-2xl uppercase">Cavaglio sotto le Stelle</h3>
+              <p class="text-xs text-white/90 mt-1">4 serate con filtri dedicati →</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- BACHECA SOSTIENI LA PRO LOCO & 5x1000 -->
+        <div class="bg-paper rounded-3xl p-6 sm:p-8 border border-ink/10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 space-y-3">
+            <span class="inline-block bg-hill text-white text-xs font-extrabold uppercase px-3 py-1 rounded-full">
+              Area Soci & 5×1000
+            </span>
+            <h3 class="font-display text-3xl sm:text-4xl uppercase text-ink leading-tight">
+              Sostieni la Pro Loco di Cavaglio d'Agogna
+            </h3>
+            <p class="text-sm text-ink/75 leading-relaxed">
+              Dona il <strong>5×1000</strong> nella tua dichiarazione dei redditi a costo zero per sostenere le iniziative ricreative, sociali e culturali del paese.
+            </p>
+            <div class="flex flex-wrap gap-2.5 pt-2">
+              <a href="soci.html" class="btn-press bg-ink hover:bg-cobalt text-white font-extrabold text-xs uppercase tracking-wider px-5 py-3 rounded-full transition">
+                Area Soci & Modulo Tesseramento →
+              </a>
+              <a href="chi-siamo.html" class="btn-press bg-white hover:bg-sun text-ink font-extrabold text-xs uppercase tracking-wider px-5 py-3 rounded-full border border-ink/15 transition">
+                Chi Siamo & Direttivo
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 bg-white rounded-2xl p-5 sm:p-6 border border-ink/10 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-cobalt">Bacheca Sociale</span>
+              <a href="soci.html" class="text-xs font-bold underline hover:text-cobalt">Tutti i dettagli →</a>
+            </div>
+            <div class="divide-y divide-ink/10">
+              <div class="pb-3.5">
+                <span class="text-[11px] font-extrabold uppercase text-coral">Convocazione Istituzionale</span>
+                <h4 class="font-bold text-ink text-sm sm:text-base mt-0.5">Assemblea dei Soci – Martedì 15 Dicembre</h4>
+                <p class="text-xs text-ink/70 mt-1 tabular-nums">Prima convocazione ore <strong>19:45</strong> | Seconda convocazione ore <strong>21:00</strong>.</p>
+              </div>
+              <div class="pt-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <span class="text-[11px] font-extrabold uppercase text-hill-dark">5×1000 Dichiarazione dei Redditi</span>
+                  <h4 class="font-bold text-ink text-sm mt-0.5">Codice Fiscale: <span class="font-mono text-cobalt tabular-nums">91004540034</span></h4>
+                </div>
+                <button onclick="window.copyCF()" class="btn-press bg-sun hover:bg-sun-dark text-ink font-extrabold text-xs uppercase px-4 py-2.5 rounded-full transition shrink-0 self-start sm:self-auto">
+                  Copia Codice Fiscale
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL DETTAGLI LOCANDINA EVENTO (CONDIVISO) -->
+  <div id="detail-modal" onclick="if(event.target===this) window.closeModal('detail-modal')" class="fixed inset-0 z-50 hidden bg-ink/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-ink/10 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-start justify-between border-b border-ink/10 pb-4 mb-5 gap-4">
+        <div>
+          <span id="det-badge" class="inline-block px-3 py-1 rounded-full text-[11px] font-extrabold uppercase bg-sun text-ink mb-1">Evento</span>
+          <h3 id="det-title" class="font-display text-3xl sm:text-4xl uppercase text-ink">Titolo Evento</h3>
+          <p id="det-meta" class="text-xs sm:text-sm text-ink/65 font-bold mt-1 tabular-nums">Data • Luogo</p>
+        </div>
+        <button onclick="window.closeModal('detail-modal')" class="btn-press p-2 rounded-full bg-paper hover:bg-ink/10 text-ink shrink-0 transition" aria-label="Chiudi">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="det-body" class="space-y-5 text-sm text-ink/85"></div>
+      <div class="mt-6 pt-4 border-t border-ink/10 flex flex-wrap items-center justify-between gap-2.5">
+        <div id="det-extra-actions" class="flex flex-wrap gap-2"></div>
+        <div class="flex flex-wrap gap-2.5 ml-auto">
+          <button onclick="window.closeModal('detail-modal')" class="btn-press px-4 py-2.5 rounded-full bg-paper font-extrabold text-xs uppercase text-ink">Chiudi</button>
+          <button id="det-book-btn" class="px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-ink font-extrabold text-xs uppercase shadow transition">
+            Prenota su WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER AUTOMATICO -->
+  <footer id="site-footer"></footer>
+
+  <!-- SCRIPT MODULARI -->
+  <script src="js/layout.js"></script>
+  <script src="data/eventi.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/meteo.js"></script>
+</body>
+</html>

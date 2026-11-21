@@ -1,0 +1,42 @@
+/**
+ * Listino Ufficiale Menù Oktoberfest 2026 – Pro Loco Cavaglio d'Agogna APS
+ * 36 Articoli con codice cassa numerico 1..36
+ */
+const MENU_ITEMS = [
+      { id: 'm1', cod: '1', cat: 'cucina', name: 'Fidighina / Duja', desc: 'Specialità tradizionale novarese servita calda.', price: 6.00, tag: 'Cucina', stickerBg: 'bg-sun text-ink' },
+      { id: 'm2', cod: '2', cat: 'cucina', name: 'Pasta al pomodoro', desc: 'Piatto di pasta con salsa al pomodoro.', price: 5.00, tag: 'Primi', stickerBg: 'bg-paper text-ink' },
+      { id: 'm3', cod: '3', cat: 'cucina', name: 'Pasta salsiccia e zafferano', desc: 'Pasta con salsiccia fresca e profumo di zafferano.', price: 8.00, tag: 'Primi', stickerBg: 'bg-sun text-ink' },
+      { id: 'm4', cod: '4', cat: 'cucina', name: 'Bis di formaggi (toma e gorgonzola)', desc: 'Degustazione di toma piemontese e gorgonzola.', price: 6.00, tag: 'Cucina', stickerBg: 'bg-hill text-white' },
+      { id: 'm5', cod: '5', cat: 'cucina', name: 'Stinco con patate o crauti', desc: 'Stinco di maiale arrosto accompagnato da patate o crauti.', price: 14.00, tag: 'Oktoberfest', stickerBg: 'bg-coral text-white' },
+      { id: 'm6', cod: '6', cat: 'cucina', name: 'Wurstel di pollo e crauti', desc: 'Wurstel di pollo serviti con contorno di crauti.', price: 5.00, tag: 'Oktoberfest', stickerBg: 'bg-cobalt text-white' },
+      { id: 'm7', cod: '7', cat: 'cucina', name: 'Wurstel di pollo e patatine', desc: 'Wurstel di pollo serviti con patatine fritte.', price: 5.00, tag: 'Oktoberfest', stickerBg: 'bg-cobalt text-white' },
+      { id: 'm8', cod: '8', cat: 'cucina', name: 'Polenta dorata con fonduta', desc: 'Polenta dorata accompagnata da fonduta calda.', price: 6.50, tag: 'Tipico', stickerBg: 'bg-sun text-ink' },
+      { id: 'm9', cod: '9', cat: 'cucina', name: 'Polpette di manzo con patate o crauti', desc: 'Polpette di manzo con contorno a scelta di patate o crauti.', price: 7.00, tag: 'Cucina', stickerBg: 'bg-coral text-white' },
+      { id: 'm10', cod: '10', cat: 'panini', name: 'Panino con formaggio', desc: 'Panino fresco farcito con formaggio.', price: 4.00, tag: 'Panini', stickerBg: 'bg-paper text-ink' },
+      { id: 'm11', cod: '11', cat: 'panini', name: 'Panino salamella', desc: 'Panino caldo con salamella alla piastra.', price: 4.00, tag: 'Panini', stickerBg: 'bg-coral text-white' },
+      { id: 'm12', cod: '12', cat: 'panini', name: 'Panino wurstel', desc: 'Panino caldo con wurstel (+0,50 € con aggiunta crauti).', price: 4.00, tag: 'Panini', stickerBg: 'bg-cobalt text-white' },
+      { id: 'm13', cod: '13', cat: 'panini', name: 'Panino wurstel + crauti', desc: 'Panino caldo con wurstel e aggiunta di crauti (+0,50 €).', price: 4.50, tag: 'Panini', stickerBg: 'bg-cobalt text-white' },
+      { id: 'm14', cod: '14', cat: 'panini', name: 'Brezel', desc: 'Classico brezel salato dell\'Oktoberfest.', price: 2.80, tag: 'Oktoberfest', stickerBg: 'bg-sun text-ink' },
+      { id: 'm15', cod: '15', cat: 'dolci', name: 'Patatine fritte', desc: 'Porzione di patatine fritte calde.', price: 3.50, tag: 'Contorni', stickerBg: 'bg-sun text-ink' },
+      { id: 'm16', cod: '16', cat: 'dolci', name: 'Crauti', desc: 'Porzione di crauti caldi.', price: 3.50, tag: 'Contorni', stickerBg: 'bg-hill text-white' },
+      { id: 'm17', cod: '17', cat: 'dolci', name: 'Strudel', desc: 'Fetta di strudel tradizionale.', price: 5.00, tag: 'Dolci', stickerBg: 'bg-coral text-white' },
+      { id: 'm18', cod: '18', cat: 'dolci', name: 'Crostata', desc: 'Fetta di crostata.', price: 4.00, tag: 'Dolci', stickerBg: 'bg-paper text-ink' },
+      { id: 'm19', cod: '19', cat: 'dolci', name: 'Profitterolles', desc: 'Porzione di profitterolles al cioccolato.', price: 4.00, tag: 'Dolci', stickerBg: 'bg-paper text-ink' },
+      { id: 'm20', cod: '20', cat: 'birre', name: 'Birra Chiara alla Spina', desc: 'Birra chiara fresca spillata al momento.', price: 5.00, tag: 'Spina', stickerBg: 'bg-sun text-ink' },
+      { id: 'm21', cod: '21', cat: 'birre', name: 'Birra Scura alla Spina', desc: 'Birra scura alla spina.', price: 6.00, tag: 'Spina', stickerBg: 'bg-ink text-white' },
+      { id: 'm22', cod: '22', cat: 'birre', name: 'Panaché alla Spina', desc: 'Birra chiara alla spina con gazzosa.', price: 4.00, tag: 'Spina', stickerBg: 'bg-hill text-white' },
+      { id: 'm23', cod: '23', cat: 'birre', name: 'Cocktail Alcolico', desc: 'Cocktail preparato al bar.', price: 5.00, tag: 'Cocktail', stickerBg: 'bg-coral text-white' },
+      { id: 'm24', cod: '24', cat: 'birre', name: 'Cocktail Analcolico', desc: 'Cocktail analcolico alla frutta.', price: 4.00, tag: 'Cocktail', stickerBg: 'bg-hill text-white' },
+      { id: 'm25', cod: '25', cat: 'bar', name: 'Acqua 0,5L', desc: 'Bottiglietta d\'acqua da 0,5 litri.', price: 1.00, tag: 'Bevande', stickerBg: 'bg-paper text-ink' },
+      { id: 'm26', cod: '26', cat: 'bar', name: 'Coca Cola', desc: 'Bibita fresca.', price: 3.00, tag: 'Bevande', stickerBg: 'bg-paper text-ink' },
+      { id: 'm27', cod: '27', cat: 'bar', name: 'Fanta', desc: 'Bibita fresca all\'arancia.', price: 3.00, tag: 'Bevande', stickerBg: 'bg-paper text-ink' },
+      { id: 'm28', cod: '28', cat: 'bar', name: 'Tè al Limone / Pesca', desc: 'Tè freddo al limone o alla pesca.', price: 3.00, tag: 'Bevande', stickerBg: 'bg-paper text-ink' },
+      { id: 'm29', cod: '29', cat: 'bar', name: 'Caffè', desc: 'Caffè espresso al bar.', price: 1.00, tag: 'Caffetteria', stickerBg: 'bg-ink text-white' },
+      { id: 'm30', cod: '30', cat: 'bar', name: 'Caffè Corretto', desc: 'Caffè espresso corretto.', price: 1.50, tag: 'Caffetteria', stickerBg: 'bg-ink text-white' },
+      { id: 'm31', cod: '31', cat: 'bar', name: 'Amaro', desc: 'Bicchierino di amaro.', price: 3.50, tag: 'Bar', stickerBg: 'bg-ink text-white' },
+      { id: 'm32', cod: '32', cat: 'bar', name: 'Rosso Vespolina Quarna (Bottiglia)', desc: 'Vino rosso in bottiglia.', price: 15.00, tag: 'Vino Bottiglia', stickerBg: 'bg-cobalt text-white' },
+      { id: 'm33', cod: '33', cat: 'bar', name: 'Rosso Ghemme Mazzoni (Bottiglia)', desc: 'Vino rosso DOCG in bottiglia.', price: 25.00, tag: 'Vino Bottiglia', stickerBg: 'bg-cobalt text-white' },
+      { id: 'm34', cod: '34', cat: 'bar', name: 'Rosso Nebbiolo Mazzoni (Bottiglia)', desc: 'Vino rosso Nebbiolo in bottiglia.', price: 15.00, tag: 'Vino Bottiglia', stickerBg: 'bg-cobalt text-white' },
+      { id: 'm35', cod: '35', cat: 'bar', name: 'Bianco Iris Mazzoni (Bottiglia)', desc: 'Vino bianco Iris in bottiglia.', price: 15.00, tag: 'Vino Bottiglia', stickerBg: 'bg-sun text-ink' },
+      { id: 'm36', cod: '36', cat: 'bar', name: 'Prosecco (Bottiglia)', desc: 'Bottiglia di Prosecco.', price: 10.00, tag: 'Vino Bottiglia', stickerBg: 'bg-sun text-ink' }
+    ];
