@@ -6,7 +6,10 @@ const FOTO_DATABASE = {
   "castagnata-2026": {
     "id": "castagnata-2026",
     "titolo": "Castagnata 2026",
+    "isoDate": "2026-11-01",
     "data": "Domenica 1 Novembre 2026",
+    "badgeText": "1 Novembre 2026",
+    "gradient": "from-[#6B2A14] to-[#FF5A26]",
     "descrizione": "Tutti gli scatti della tradizionale Castagnata d'autunno presso la Casetta della Pro Loco.",
     "copertinaId": "1BFqh9gRsxO6GzjL8sCJWSkQN-zQgYNAv",
     "totale": 39,
@@ -172,7 +175,10 @@ const FOTO_DATABASE = {
   "oktoberfest-2026": {
     "id": "oktoberfest-2026",
     "titolo": "Oktoberfest 2026",
+    "isoDate": "2026-10-10",
     "data": "Sabato 10 Ottobre 2026",
+    "badgeText": "10 Ottobre 2026",
+    "gradient": "from-[#1B4965] to-[#2A4BFF]",
     "descrizione": "La festa bavarese di Cavaglio d'Agogna tra birra alla spina, piatti tipici e musica live.",
     "copertinaId": "1rst6SZAjkhJTAajMGKXAcS26gmnDjgqZ",
     "totale": 79,
@@ -497,8 +503,11 @@ const FOTO_DATABASE = {
   },
   "cavaglio-stelle-2026": {
     "id": "cavaglio-stelle-2026",
-    "titolo": "Cavaglio sotto le Stelle 2026",
+    "titolo": "Cavaglio sotto le Stelle",
+    "isoDate": "2026-07-20",
     "data": "17–20 Luglio 2026",
+    "badgeText": "17–20 Luglio 2026",
+    "gradient": "from-[#1D37CC] to-[#4F8F33]",
     "descrizione": "Quattro serate indimenticabili di festa patronale, concerti, DJ set, cucina e la grande sfilata.",
     "copertinaId": "10CEXp76hbP5oERc4HQXE036Pe_sB_jQ5",
     "totale": 789,
@@ -3690,3 +3699,21 @@ const FOTO_DATABASE = {
     ]
   }
 };
+
+/**
+ * Ritorna l'elenco di tutti gli album ordinati per data decrescente (il più recente per primo)
+ */
+if (typeof window !== 'undefined') {
+  window.FOTO_DATABASE = FOTO_DATABASE;
+  window.getSortedAlbums = function () {
+    if (typeof FOTO_DATABASE === 'undefined') return [];
+    return Object.keys(FOTO_DATABASE).map(key => FOTO_DATABASE[key]).sort((a, b) => {
+      const dateA = new Date(a.isoDate || a.date || '2000-01-01');
+      const dateB = new Date(b.isoDate || b.date || '2000-01-01');
+      return dateB - dateA;
+    });
+  };
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = FOTO_DATABASE;
+}

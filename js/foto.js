@@ -1,5 +1,5 @@
 /**
- * Archivio Fotografico Nativo con Galleria Progressiva e Lightbox Full-Screen
+ * Archivio Fotografico
  * Pro Loco Cavaglio d'Agogna APS
  */
 
@@ -14,8 +14,96 @@
 
   let currentLightboxIndex = 0;
 
+  // Scorrimento laterale carosello album
+  window.scrollAlbumCarousel = function (direction) {
+    const carousel = document.getElementById('album-carousel');
+    if (!carousel) return;
+    const scrollAmount = Math.max(300, carousel.clientWidth * 0.75) * direction;
+    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+
+  // Rendering dinamico delle schede album nel carosello a scorrimento
+  function renderAlbumCarousel(activeKey) {
+    const carousel = document.getElementById('album-carousel');
+    if (!carousel) return;
+
+    const albums = (typeof window.getSortedAlbums === 'function')
+      ? window.getSortedAlbums()
+      : Object.keys(FOTO_DATABASE).map(k => FOTO_DATABASE[k]);
+
+    if (!albums || albums.length === 0) return;
+
+    // Indicatore album più recente in alto
+    const latestBadgeEl = document.getElementById('latest-album-indicator');
+    if (latestBadgeEl && albums[0]) {
+      latestBadgeEl.textContent = `Più recente: ${albums[0].titolo} (${albums[0].badgeText || albums[0].data})`;
+    }
+
+    carousel.innerHTML = albums.map((album, idx) => {
+      const isLatest = idx === 0;
+      const isSelected = album.id === activeKey;
+      const coverThumb = album.copertinaId
+        ? `https://lh3.googleusercontent.com/d/${album.copertinaId}=w600`
+        : '';
+      const fallbackThumb = album.copertinaId
+        ? `https://drive.google.com/thumbnail?id=${album.copertinaId}&sz=w600`
+        : '';
+
+      return `
+        <article
+          onclick="window.selectAlbum('${album.id}', 'tutte', true)"
+          data-album="${album.id}"
+          class="album-tab-btn btn-press text-left bg-white rounded-3xl overflow-hidden border border-ink/15 shadow-md hover:shadow-xl transition-all duration-200 cursor-pointer flex flex-col justify-between shrink-0 snap-start w-[85vw] sm:w-[360px] md:w-[380px] select-none ${isSelected ? 'ring-4 ring-cobalt border-transparent shadow-xl' : ''}"
+        >
+          <div class="h-44 bg-gradient-to-br ${album.gradient || 'from-[#1B4965] to-[#2A4BFF]'} p-5 text-white flex flex-col justify-between relative overflow-hidden">
+            ${coverThumb ? `
+              <img
+                src="${coverThumb}"
+                alt="Copertina ${album.titolo}"
+                loading="lazy"
+                onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='${fallbackThumb}';}else{this.style.display='none';}"
+                class="absolute inset-0 w-full h-full object-cover object-center opacity-30 transition-transform duration-300 pointer-events-none"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20 pointer-events-none"></div>
+            ` : ''}
+
+            <div class="relative z-10 flex items-center justify-between gap-2">
+              <span class="bg-white/20 backdrop-blur-sm text-white text-[11px] font-extrabold uppercase px-3 py-1 rounded-full tabular-nums">
+                ${album.badgeText || album.data}
+              </span>
+              ${isLatest ? `
+                <span class="sticker-badge rotate-2 bg-sun text-ink text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full shadow">
+                  Più Recente ★
+                </span>
+              ` : ''}
+            </div>
+
+            <div class="relative z-10">
+              <h3 class="font-display text-2xl sm:text-3xl uppercase tracking-wide leading-tight text-white drop-shadow">
+                ${album.titolo}
+              </h3>
+              <span class="text-xs text-white/90 font-bold tabular-nums">
+                ${album.totale || (album.foto ? album.foto.length : 0)} Fotografie
+              </span>
+            </div>
+          </div>
+
+          <div class="p-5 flex-grow flex flex-col justify-between gap-4">
+            <p class="text-xs sm:text-sm text-ink/75 leading-relaxed">
+              ${album.descrizione}
+            </p>
+            <div class="pt-2 flex items-center justify-between border-t border-dashed border-ink/15 text-xs font-black uppercase text-cobalt">
+              <span>Sfoglia fotografie</span>
+              <span class="text-base leading-none">↓</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
   // Seleziona un album principale
-  window.selectAlbum = function (albumKey, subFilterKey) {
+  window.selectAlbum = function (albumKey, subFilterKey, shouldScroll) {
     if (typeof FOTO_DATABASE === 'undefined') return;
     const album = FOTO_DATABASE[albumKey];
     if (!album) return;
@@ -27,9 +115,9 @@
     // Aggiorna stile pulsanti album
     document.querySelectorAll('.album-tab-btn').forEach(btn => {
       if (btn.dataset.album === albumKey) {
-        btn.classList.add('ring-4', 'ring-cobalt', 'border-transparent');
+        btn.classList.add('ring-4', 'ring-cobalt', 'border-transparent', 'shadow-xl');
       } else {
-        btn.classList.remove('ring-4', 'ring-cobalt', 'border-transparent');
+        btn.classList.remove('ring-4', 'ring-cobalt', 'border-transparent', 'shadow-xl');
       }
     });
 
@@ -70,6 +158,14 @@
     const grid = document.getElementById('photo-grid');
     if (grid) grid.innerHTML = '';
     window.loadMorePhotos();
+
+    // Scorrimento dolce verso la sezione delle fotografie
+    if (shouldScroll) {
+      const activeSection = document.getElementById('active-album-section');
+      if (activeSection) {
+        activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   };
 
   // Seleziona il filtro per serata (Cavaglio sotto le Stelle)
@@ -266,18 +362,24 @@
       }
     }
 
-    // Inizializzazione album da URL parametro o hash
-    let initAlbum = 'castagnata-2026';
+    // Inizializzazione album: default al più recente
+    const sorted = (typeof window.getSortedAlbums === 'function') ? window.getSortedAlbums() : [];
+    let initAlbum = sorted.length > 0 ? sorted[0].id : 'castagnata-2026';
+
     const params = new URLSearchParams(window.location.search);
     const paramAlbum = params.get('album');
     const hash = window.location.hash.replace('#', '');
 
+    let hasExplicitTarget = false;
     if (paramAlbum && FOTO_DATABASE[paramAlbum]) {
       initAlbum = paramAlbum;
+      hasExplicitTarget = true;
     } else if (hash && FOTO_DATABASE[hash]) {
       initAlbum = hash;
+      hasExplicitTarget = true;
     }
 
-    window.selectAlbum(initAlbum);
+    renderAlbumCarousel(initAlbum);
+    window.selectAlbum(initAlbum, 'tutte', hasExplicitTarget);
   });
 })();

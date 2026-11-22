@@ -273,14 +273,14 @@
               <ul class="space-y-1.5 list-disc pl-5">
                 <li><strong>Richieste Tesseramento e Contatti:</strong> i dati conferiti volontariamente (nome, recapito email, comune) vengono impiegati unicamente per rispondere alle richieste dell'interessato o per il rilascio della tessera socio APS (art. 6, par. 1, lett. b GDPR).</li>
                 <li><strong>Rubriche Partecipative ("La Foto del Mese"):</strong> fotografie inviate spontaneamente via email dai cittadini, pubblicate con citazione dell'autore e rimovibili in qualsiasi momento su semplice segnalazione scritta.</li>
-                <li><strong>Menù e Codice Cassa:</strong> la composizione dell'ordine per l'Oktoberfest avviene in locale nel browser; nessun dato sensibile o bancario viene memorizzato o trasmesso a server terzi.</li>
+                <li><strong>Menù e Codice Cassa:</strong> la composizione dell'ordine per l'Oktoberfest avviene direttamente sul dispositivo dell'utente; nessun dato personale o bancario viene memorizzato o trasmesso a terzi.</li>
                 <li><strong>Archivio Fotografico Eventi:</strong> pubblicazione di immagini scattate nel corso di manifestazioni pubbliche a scopo documentale e di promozione del territorio (art. 97 L. 633/1941).</li>
               </ul>
             </div>
             <div class="bg-sun-light rounded-2xl p-4 border border-sun">
               <h4 class="font-extrabold uppercase text-xs text-ink mb-1">3. Cookie Policy & Diritti</h4>
               <p>
-                Questo sito web <strong>non fa uso di cookie di profilazione o tracciamento pubblicitario</strong>. Sono impiegati unicamente cookie tecnici o risorse CDN strettamente necessarie al funzionamento visivo. L'utente può esercitare i diritti previsti dagli artt. 15-22 GDPR scrivendo a <strong>proloco.cavaglio@gmail.com</strong>.
+                Questo sito web <strong>non fa uso di cookie di profilazione o tracciamento pubblicitario</strong>. Sono impiegati unicamente strumenti tecnici strettamente necessari al corretto funzionamento del sito. L'utente può esercitare i diritti previsti dagli artt. 15-22 GDPR scrivendo a <strong>proloco.cavaglio@gmail.com</strong>.
               </p>
             </div>
           </div>

@@ -156,6 +156,35 @@ html, body {
 /* ========================================================= */
 /* GALLERIA FOTOGRAFICA & LIGHTBOX                           */
 /* ========================================================= */
+.album-carousel {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5rem 0.25rem 1.25rem 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 transparent;
+}
+
+.album-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.album-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.album-carousel::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 99px;
+}
+
+.album-carousel::-webkit-scrollbar-thumb:hover {
+  background: #2A4BFF;
+}
+
 .photo-thumb-container {
   aspect-ratio: 4/3;
   overflow: hidden;

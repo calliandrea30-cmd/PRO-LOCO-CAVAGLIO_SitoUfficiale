@@ -91,12 +91,20 @@
     }
   }
 
-  function startCountdown() {
+  window.initHeroCountdown = function (targetIsoDate) {
     const el = document.getElementById('hero-countdown');
     if (!el) return;
 
-    // Data obiettivo: Gita a Carrù 29 Novembre 2026 ore 7:45
-    const targetDate = new Date('2026-11-29T07:45:00').getTime();
+    let targetDate = targetIsoDate ? new Date(targetIsoDate).getTime() : 0;
+    if (!targetDate && typeof EVENTI_DATA !== 'undefined') {
+      const now = Date.now();
+      const upcoming = EVENTI_DATA.filter(e => e.isoDate && new Date(e.isoDate).getTime() >= now)
+        .sort((a, b) => new Date(a.isoDate) - new Date(b.isoDate));
+      if (upcoming[0]) targetDate = new Date(upcoming[0].isoDate).getTime();
+    }
+    if (!targetDate) {
+      targetDate = new Date('2026-11-29T07:45:00').getTime();
+    }
 
     function update() {
       const now = Date.now();
@@ -114,11 +122,14 @@
     }
 
     update();
-    setInterval(update, 60000);
-  }
+    if (window._heroCountdownTimer) clearInterval(window._heroCountdownTimer);
+    window._heroCountdownTimer = setInterval(update, 60000);
+  };
 
   document.addEventListener('DOMContentLoaded', function () {
     loadCavaglioWeather();
-    startCountdown();
+    if (window.initHeroCountdown) {
+      window.initHeroCountdown();
+    }
   });
 })();

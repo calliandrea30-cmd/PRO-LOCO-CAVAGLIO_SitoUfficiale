@@ -6,7 +6,54 @@
 (function () {
   'use strict';
 
-  function createEventCard(ev, options = {}) {
+  // Verifica se un evento è già concluso rispetto alla data odierna
+  function isEventConcluded(ev) {
+    if (ev.status === 'past') return true;
+    if (!ev.isoDate) return false;
+    const evEnd = new Date(ev.isoDate);
+    // Margine fino alla fine della giornata (ore 23:59:59)
+    evEnd.setHours(23, 59, 59, 999);
+    return evEnd.getTime() < Date.now();
+  }
+
+  // Restituisce l'evento con lo stato effettivo aggiornato in tempo reale
+  function getEffectiveEvent(ev) {
+    if (!ev) return ev;
+    if (isEventConcluded(ev)) {
+      return {
+        ...ev,
+        status: 'past',
+        badge: (ev.badge && ev.badge.includes('Concluso')) ? ev.badge : `Concluso • ${ev.year}`,
+        entry: 'Evento Concluso',
+        dateTime: 'Concluso'
+      };
+    }
+    return ev;
+  }
+
+  // Restituisce gli eventi futuri/in programma ordinati per data crescente (il più vicino per primo)
+  function getUpcomingEvents() {
+    if (typeof EVENTI_DATA === 'undefined') return [];
+    return EVENTI_DATA
+      .filter(e => !isEventConcluded(e))
+      .sort((a, b) => new Date(a.isoDate || 0) - new Date(b.isoDate || 0));
+  }
+
+  // Restituisce i 3 eventi per la Home: prioritari quelli futuri imminenti
+  function getHomeEvents() {
+    const upcoming = getUpcomingEvents();
+    if (upcoming.length >= 3) {
+      return upcoming.slice(0, 3);
+    }
+    // Se ci sono meno di 3 eventi futuri, completa con gli eventi più recentemente conclusi
+    const concluded = EVENTI_DATA
+      .filter(e => isEventConcluded(e))
+      .sort((a, b) => new Date(b.isoDate || 0) - new Date(a.isoDate || 0));
+    return [...upcoming, ...concluded].slice(0, 3);
+  }
+
+  function createEventCard(evRaw, options = {}) {
+    const ev = getEffectiveEvent(evRaw);
     const isSoldOut = ev.status === 'soldout';
     const isFree = ev.status === 'free';
     const isPast = ev.status === 'past';
@@ -141,8 +188,9 @@
 
   window.openEventDetail = function (eventId) {
     if (typeof EVENTI_DATA === 'undefined') return;
-    const ev = EVENTI_DATA.find(e => e.id === eventId);
-    if (!ev) return;
+    const rawEv = EVENTI_DATA.find(e => e.id === eventId);
+    if (!rawEv) return;
+    const ev = getEffectiveEvent(rawEv);
 
     const modal = document.getElementById('detail-modal');
     if (!modal) return;
@@ -284,6 +332,149 @@
     }
   };
 
+  // Rendering dinamico evento in primo piano nella Hero (colonna destra Home)
+  function renderHeroUpcomingEvent() {
+    const heroCard = document.getElementById('hero-event-card');
+    if (!heroCard || typeof EVENTI_DATA === 'undefined') return;
+
+    const upcoming = getUpcomingEvents();
+    let heroEv = upcoming[0];
+    if (!heroEv) {
+      const allSorted = [...EVENTI_DATA].sort((a, b) => new Date(b.isoDate || 0) - new Date(a.isoDate || 0));
+      heroEv = allSorted[0];
+    }
+    if (!heroEv) return;
+
+    const ev = getEffectiveEvent(heroEv);
+    const isSoldOut = ev.status === 'soldout';
+    const isFree = ev.status === 'free';
+    const isBookable = ev.status === 'bookable' || ev.status === 'prenotabile';
+    const isPast = ev.status === 'past';
+
+    let primaryBtn = '';
+    if (isSoldOut) {
+      primaryBtn = `
+        <button disabled class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-[#DC2626] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wide px-5 py-3.5 rounded-full shadow-lg cursor-not-allowed opacity-95">
+          SOLD OUT – Posti Terminati
+        </button>`;
+    } else if (isBookable) {
+      primaryBtn = `
+        <a href="https://wa.me/393480816395?text=${encodeURIComponent('Buongiorno, vorrei informazioni / prenotare per l\'evento: ' + ev.title)}" target="_blank" rel="noopener" class="btn-press flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1EBE5D] text-ink font-extrabold text-xs sm:text-sm uppercase tracking-wide px-6 py-3.5 rounded-full shadow-lg transition">
+          Prenota su WhatsApp
+        </a>`;
+    } else if (isFree) {
+      primaryBtn = `
+        <div class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-hill text-white font-extrabold text-xs sm:text-sm uppercase tracking-wide px-5 py-3.5 rounded-full shadow-md">
+          Ingresso Libero
+        </div>`;
+    } else {
+      primaryBtn = `
+        <button disabled class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-paper text-ink/40 font-extrabold text-xs sm:text-sm uppercase tracking-wide px-5 py-3.5 rounded-full shadow-sm cursor-not-allowed">
+          Evento Concluso
+        </button>`;
+    }
+
+    let countdownElHtml = '';
+    if (!isPast && heroEv.isoDate) {
+      countdownElHtml = `
+        <div class="bg-ink/65 backdrop-blur-md border border-white/15 px-3.5 py-1.5 rounded-full text-xs font-extrabold text-sun tabular-nums">
+          Partenza: <span id="hero-countdown">--g --h --m</span>
+        </div>`;
+    } else {
+      countdownElHtml = `
+        <div class="bg-ink/65 backdrop-blur-md border border-white/15 px-3.5 py-1.5 rounded-full text-xs font-extrabold text-white/80">
+          Prossimi Eventi in Arrivo
+        </div>`;
+    }
+
+    heroCard.innerHTML = `
+      <div class="relative z-10 flex flex-wrap items-center justify-between gap-2">
+        <span class="${ev.stickerBg || 'bg-[#DC2626] text-white'} text-xs font-extrabold uppercase px-3.5 py-1.5 rounded-full tracking-wider shadow">
+          ${ev.badge}
+        </span>
+        ${countdownElHtml}
+      </div>
+
+      <div class="relative z-10 my-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-5 sm:p-7 space-y-3">
+        <div class="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wider text-sun tabular-nums">
+          <span>${ev.dateDay}</span>
+          <span>•</span>
+          <span>${ev.dateTime}</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-5xl uppercase tracking-wide text-white leading-none">
+          ${ev.title}
+        </h2>
+        <p class="text-sm text-white/90 leading-relaxed">
+          ${ev.summary || 'Unisciti a noi per vivere insieme le feste e le iniziative di Cavaglio d\'Agogna!'}
+        </p>
+        <div class="flex flex-wrap gap-2 pt-1 tabular-nums">
+          <span class="bg-white/15 px-3 py-1 rounded-full text-xs font-bold">${ev.location}</span>
+          <span class="bg-white/15 px-3 py-1 rounded-full text-xs font-bold">${ev.entry}</span>
+        </div>
+      </div>
+
+      <div class="relative z-10 flex flex-wrap items-center gap-2.5">
+        ${primaryBtn}
+        <button onclick="window.openEventDetail('${ev.id}')" class="btn-press inline-flex items-center justify-center bg-white hover:bg-sun text-ink font-extrabold text-xs sm:text-sm uppercase tracking-wide px-5 py-3.5 rounded-full transition">
+          Programma & Menù
+        </button>
+        ${ev.hasPoster ? `
+          <button onclick="window.downloadPoster('${ev.id}')" class="btn-press inline-flex items-center justify-center gap-1.5 bg-sun hover:bg-sun-dark text-ink font-extrabold text-xs uppercase tracking-wide px-4 py-3.5 rounded-full transition" title="Scarica Locandina Ufficiale">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Locandina
+          </button>` : ''}
+        <button onclick="window.shareEvent('${ev.id}')" class="btn-press p-3.5 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/20 transition" title="Condividi evento">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+        </button>
+      </div>
+    `;
+
+    if (!isPast && heroEv.isoDate && window.initHeroCountdown) {
+      window.initHeroCountdown(heroEv.isoDate);
+    }
+  }
+
+  // Rendering dei 3 album fotografici più recenti nella Home page
+  function renderHomePhotoAlbums() {
+    const container = document.getElementById('home-photo-albums-grid');
+    if (!container) return;
+
+    let html = `
+      <a href="menu.html" class="btn-press group text-left rounded-3xl p-6 bg-gradient-to-br from-[#1B4965] to-cobalt text-white flex flex-col justify-between min-h-[190px] shadow-md hover:-translate-y-1 transition">
+        <span class="sticker-badge -rotate-2 self-start bg-sun text-ink text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+          Listino Ufficiale
+        </span>
+        <div>
+          <h3 class="font-display text-2xl uppercase">Menù & Cucina</h3>
+          <p class="text-xs text-white/90 mt-1">Cucina, birre alla spina e listino piatti →</p>
+        </div>
+      </a>
+    `;
+
+    const sortedAlbums = (typeof window.getSortedAlbums === 'function')
+      ? window.getSortedAlbums()
+      : (typeof FOTO_DATABASE !== 'undefined' ? Object.keys(FOTO_DATABASE).map(k => FOTO_DATABASE[k]) : []);
+
+    const top3 = sortedAlbums.slice(0, 3);
+    top3.forEach((album, idx) => {
+      const rotClass = idx % 2 === 0 ? 'rotate-2' : '-rotate-2';
+      const count = album.totale || (album.foto ? album.foto.length : 0);
+      html += `
+        <a href="foto.html?album=${album.id}" class="btn-press group text-left rounded-3xl p-6 bg-gradient-to-br ${album.gradient || 'from-[#6B2A14] to-coral'} text-white flex flex-col justify-between min-h-[190px] shadow-md hover:-translate-y-1 transition">
+          <span class="sticker-badge ${rotClass} self-start bg-sun text-ink text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+            ${count} Fotografie
+          </span>
+          <div>
+            <h3 class="font-display text-2xl uppercase tabular-nums">${album.titolo}</h3>
+            <p class="text-xs text-white/90 mt-1">Guarda le foto →</p>
+          </div>
+        </a>
+      `;
+    });
+
+    container.innerHTML = html;
+  }
+
   window.filterEvents = function (filterKey) {
     if (typeof EVENTI_DATA === 'undefined') return;
 
@@ -299,7 +490,7 @@
 
     let filtered = EVENTI_DATA;
     if (filterKey === 'upcoming') {
-      filtered = EVENTI_DATA.filter(e => e.status === 'soldout' || e.status === 'free' || e.status === 'bookable');
+      filtered = EVENTI_DATA.filter(e => !isEventConcluded(e));
     } else if (filterKey === '2026') {
       filtered = EVENTI_DATA.filter(e => e.year === '2026');
     } else if (filterKey === '2025') {
@@ -315,11 +506,17 @@
   document.addEventListener('DOMContentLoaded', function () {
     if (typeof EVENTI_DATA === 'undefined') return;
 
-    // Sezione Home: Primi 3 eventi
+    // Sezione Home: Evento in Primo Piano (Hero dinamica)
+    renderHeroUpcomingEvent();
+
+    // Sezione Home: Primi 3 eventi più recenti/imminenti dalla data odierna
     const homeGrid = document.getElementById('home-events-grid');
     if (homeGrid) {
-      homeGrid.innerHTML = EVENTI_DATA.slice(0, 3).map(ev => createEventCard(ev)).join('');
+      homeGrid.innerHTML = getHomeEvents().map(ev => createEventCard(ev)).join('');
     }
+
+    // Sezione Home: I 3 album fotografici più recenti
+    renderHomePhotoAlbums();
 
     // Sezione Completa: Calendario Eventi
     const allGrid = document.getElementById('all-events-grid');

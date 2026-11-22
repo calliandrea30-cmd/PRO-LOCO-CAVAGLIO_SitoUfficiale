@@ -73,7 +73,7 @@
               ARCHIVIO FOTO & VIDEO
             </h1>
             <p class="text-sm sm:text-base text-white/90 max-w-2xl mt-3 leading-relaxed">
-              Esplora tutti i momenti più belli degli eventi di Cavaglio d'Agogna: sfoglia le miniature veloci a caricamento progressivo e apri le fotografie a schermo intero ad alta risoluzione con download diretto dell'originale.
+              Esplora tutti i momenti più belli e le feste di Cavaglio d'Agogna: sfoglia le fotografie degli eventi, visualizza gli scatti a schermo intero e conserva i ricordi delle manifestazioni del paese.
             </p>
           </div>
           <button onclick="window.sharePage('Archivio Foto & Video – Pro Loco Cavaglio d\'Agogna')" class="btn-press inline-flex items-center gap-2 bg-white hover:bg-sun text-ink text-xs sm:text-sm font-extrabold uppercase tracking-wider px-5 py-3.5 rounded-full shadow transition self-start md:self-auto shrink-0">
@@ -84,103 +84,86 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 space-y-10">
-      <!-- LE 3 SCHEDE EVENTO SELEZIONABILI -->
-      <div>
-        <h2 class="font-display text-3xl uppercase text-ink mb-5">Scegli l'Evento da Visualizzare</h2>
+      <!-- SELEZIONE ALBUM A SCORRIMENTO ORIZZONTALE CON FRECCE & SWIPE -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-ink/10 pb-4">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <span id="latest-album-indicator" class="inline-block bg-sun text-ink text-[11px] font-extrabold uppercase px-3 py-1 rounded-full shadow-sm">
+                Caricamento album...
+              </span>
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl uppercase text-ink">
+              Sfoglia gli Album Fotografici
+            </h2>
+          </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Scheda 1: Castagnata 2026 -->
-          <button onclick="window.selectAlbum('castagnata-2026')" data-album="castagnata-2026" class="album-tab-btn btn-press text-left bg-white rounded-3xl overflow-hidden border border-ink/15 shadow-sm transition flex flex-col justify-between">
-            <div class="h-36 bg-gradient-to-br from-[#6B2A14] to-coral p-5 text-white flex flex-col justify-between w-full">
-              <span class="bg-white/20 text-white text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full self-start tabular-nums">1 Novembre 2026</span>
-              <div>
-                <h3 class="font-display text-2xl uppercase">Castagnata 2026</h3>
-                <span class="text-xs text-white/80 font-bold tabular-nums">39 Fotografie</span>
-              </div>
-            </div>
-            <div class="p-5 w-full">
-              <p class="text-xs text-ink/70">La tradizionale festa delle caldarroste presso la Casetta Pro Loco di Via Cavaglietto.</p>
-              <span class="inline-block mt-3 text-xs font-black text-coral uppercase">Apri Galleria →</span>
-            </div>
-          </button>
+          <!-- Frecce di scorrimento laterale -->
+          <div class="flex items-center gap-2 self-start sm:self-auto">
+            <span class="text-xs text-ink/50 font-bold hidden sm:inline mr-1">Scorri album:</span>
+            <button onclick="window.scrollAlbumCarousel(-1)" class="btn-press p-2.5 rounded-full bg-white hover:bg-ink hover:text-white text-ink border border-ink/15 shadow-sm transition" title="Scorri a sinistra" aria-label="Scorri album a sinistra">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button onclick="window.scrollAlbumCarousel(1)" class="btn-press p-2.5 rounded-full bg-white hover:bg-ink hover:text-white text-ink border border-ink/15 shadow-sm transition" title="Scorri a destra" aria-label="Scorri album a destra">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
 
-          <!-- Scheda 2: Oktoberfest 2026 -->
-          <button onclick="window.selectAlbum('oktoberfest-2026')" data-album="oktoberfest-2026" class="album-tab-btn btn-press text-left bg-white rounded-3xl overflow-hidden border border-ink/15 shadow-sm transition flex flex-col justify-between">
-            <div class="h-36 bg-gradient-to-br from-[#1B4965] to-cobalt p-5 text-white flex flex-col justify-between w-full">
-              <span class="bg-white/20 text-white text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full self-start tabular-nums">10 Ottobre 2026</span>
-              <div>
-                <h3 class="font-display text-2xl uppercase">Oktoberfest 2026</h3>
-                <span class="text-xs text-white/80 font-bold tabular-nums">79 Fotografie</span>
-              </div>
-            </div>
-            <div class="p-5 w-full">
-              <p class="text-xs text-ink/70">La serata bavarese con stinco, birre alla spina, musica live e grande partecipazione.</p>
-              <span class="inline-block mt-3 text-xs font-black text-cobalt uppercase">Apri Galleria →</span>
-            </div>
-          </button>
-
-          <!-- Scheda 3: Cavaglio sotto le Stelle 2026 -->
-          <button onclick="window.selectAlbum('cavaglio-stelle-2026')" data-album="cavaglio-stelle-2026" class="album-tab-btn btn-press text-left bg-white rounded-3xl overflow-hidden border border-ink/15 shadow-sm transition flex flex-col justify-between">
-            <div class="h-36 bg-gradient-to-br from-[#1D37CC] to-hill-dark p-5 text-white flex flex-col justify-between w-full">
-              <span class="bg-white/20 text-white text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full self-start tabular-nums">17–20 Luglio 2026</span>
-              <div>
-                <h3 class="font-display text-2xl uppercase">Cavaglio sotto le Stelle</h3>
-                <span class="text-xs text-white/80 font-bold tabular-nums">789 Fotografie</span>
-              </div>
-            </div>
-            <div class="p-5 w-full">
-              <p class="text-xs text-ink/70">Quattro serate di festa patronale: concerti, DJ set e la grande sfilata conclusiva.</p>
-              <span class="inline-block mt-3 text-xs font-black text-hill-dark uppercase">Apri Galleria →</span>
-            </div>
-          </button>
+        <!-- Traccia orizzontale a scorrimento (popolata da js/foto.js) -->
+        <div id="album-carousel" class="album-carousel">
+          <!-- Popolato dinamicamente -->
         </div>
       </div>
 
-      <!-- FILTRI SERATE DEDICATI PER CAVAGLIO SOTTO LE STELLE -->
-      <div id="stelle-subfilters" class="hidden bg-paper rounded-3xl p-5 border border-ink/10 space-y-3">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-extrabold uppercase text-cobalt tracking-wider">Filtra per Serata • Cavaglio sotto le Stelle</span>
-          <span class="text-xs text-ink/50 tabular-nums">789 scatti complessivi</span>
+      <!-- SEZIONE GALLERIA ATTIVA & FOTOGRAFIE -->
+      <div id="active-album-section" class="space-y-6 pt-2 scroll-mt-24">
+        <!-- FILTRI SERATE DEDICATI PER CAVAGLIO SOTTO LE STELLE -->
+        <div id="stelle-subfilters" class="hidden bg-paper rounded-3xl p-5 border border-ink/10 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-extrabold uppercase text-cobalt tracking-wider">Filtra per Serata • Cavaglio sotto le Stelle</span>
+            <span class="text-xs text-ink/50 tabular-nums">789 scatti complessivi</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 tabular-nums">
+            <button onclick="window.filterStelleSerata('tutte')" data-sub="tutte" class="subfilter-btn btn-press bg-ink text-white text-xs font-extrabold uppercase px-3.5 py-2 rounded-full transition">
+              Tutte le Serate (789)
+            </button>
+            <button onclick="window.filterStelleSerata('ven')" data-sub="ven" class="subfilter-btn btn-press bg-white text-ink border border-ink/15 text-xs font-extrabold uppercase px-3.5 py-2 rounded-full transition">
+              Venerdì 17 Luglio • 883nd (240)
+            </button>
+            <button onclick="window.filterStelleSerata('sab')" data-sub="sab" class="subfilter-btn btn-press bg-white text-ink border border-ink/15 text-xs font-extrabold uppercase px-3.5 py-2 rounded-full transition">
+              Sabato 18/19 Luglio • DJ Sussi, Eta Beta & Quarna (281)
+            </button>
+            <button onclick="window.filterStelleSerata('dom')" data-sub="dom" class="subfilter-btn btn-press bg-white text-ink border border-ink/15 text-xs font-extrabold uppercase px-3.5 py-2 rounded-full transition">
+              Domenica 19 Luglio (80)
+            </button>
+            <button onclick="window.filterStelleSerata('lun')" data-sub="lun" class="subfilter-btn btn-press bg-white text-ink border border-ink/15 text-xs font-extrabold uppercase px-3.5 py-2 rounded-full transition">
+              Lunedì 20 Luglio • La Sfilata (188)
+            </button>
+          </div>
         </div>
-        <div class="flex flex-wrap items-center gap-2 tabular-nums">
-          <button onclick="window.filterStelleSerata('tutte')" data-sub="tutte" class="subfilter-btn btn-press bg-ink text-white text-xs font-extrabold uppercase px-3.5 py-2 rounded-full transition">
-            Tutte le Serate (789)
-          </button>
-          <button onclick="window.filterStelleSerata('ven')" data-sub="ven" class="subfilter-btn btn-press bg-white text-ink border border-ink/15 text-xs font-extrabold uppercase px-3.5 py-2 rounded-full transition">
-            Venerdì 17 Luglio • 883nd (240)
-          </button>
-          <button onclick="window.filterStelleSerata('sab')" data-sub="sab" class="subfilter-btn btn-press bg-white text-ink border border-ink/15 text-xs font-extrabold uppercase px-3.5 py-2 rounded-full transition">
-            Sabato 18/19 Luglio • DJ Sussi, Eta Beta & Quarna (281)
-          </button>
-          <button onclick="window.filterStelleSerata('dom')" data-sub="dom" class="subfilter-btn btn-press bg-white text-ink border border-ink/15 text-xs font-extrabold uppercase px-3.5 py-2 rounded-full transition">
-            Domenica 19 Luglio (80)
-          </button>
-          <button onclick="window.filterStelleSerata('lun')" data-sub="lun" class="subfilter-btn btn-press bg-white text-ink border border-ink/15 text-xs font-extrabold uppercase px-3.5 py-2 rounded-full transition">
-            Lunedì 20 Luglio • La Sfilata (188)
+
+        <!-- INTESTAZIONE GALLERIA ATTIVA -->
+        <div class="border-b border-ink/10 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <span id="active-album-total" class="text-xs font-extrabold text-coral uppercase tracking-wider block mb-1 tabular-nums">Caricamento...</span>
+            <h2 id="active-album-title" class="font-display text-3xl sm:text-4xl uppercase text-ink">Titolo Album</h2>
+            <p id="active-album-desc" class="text-xs sm:text-sm text-ink/70 mt-1 max-w-xl">Descrizione dell'album selezionato.</p>
+          </div>
+          <span id="photo-counter-status" class="text-xs font-bold text-ink/50 tabular-nums">Visualizzate 0 foto</span>
+        </div>
+
+        <!-- GRIGLIA FOTOGRAFICA -->
+        <div id="photo-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
+          <!-- Popolato dinamicamente da js/foto.js a blocchi di 30 foto -->
+        </div>
+
+        <!-- PULSANTE CARICA ALTRE FOTO -->
+        <div class="pt-4 text-center">
+          <button id="btn-load-more" onclick="window.loadMorePhotos()" class="btn-press bg-ink hover:bg-cobalt text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-full shadow-md transition">
+            Carica altre foto
           </button>
         </div>
-      </div>
-
-      <!-- INTESTAZIONE GALLERIA ATTIVA -->
-      <div class="border-b border-ink/10 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-        <div>
-          <span id="active-album-total" class="text-xs font-extrabold text-coral uppercase tracking-wider block mb-1 tabular-nums">Caricamento...</span>
-          <h2 id="active-album-title" class="font-display text-3xl sm:text-4xl uppercase text-ink">Titolo Album</h2>
-          <p id="active-album-desc" class="text-xs sm:text-sm text-ink/70 mt-1 max-w-xl">Descrizione dell'album selezionato.</p>
-        </div>
-        <span id="photo-counter-status" class="text-xs font-bold text-ink/50 tabular-nums">Visualizzate 0 foto</span>
-      </div>
-
-      <!-- GRIGLIA FOTOGRAFICA NATIVA PROGRESSIVA -->
-      <div id="photo-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
-        <!-- Popolato dinamicamente da js/foto.js a blocchi di 30 foto -->
-      </div>
-
-      <!-- PULSANTE CARICA ALTRE FOTO -->
-      <div class="pt-4 text-center">
-        <button id="btn-load-more" onclick="window.loadMorePhotos()" class="btn-press bg-ink hover:bg-cobalt text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-full shadow-md transition">
-          Carica altre foto
-        </button>
       </div>
 
       <!-- NOTA PRIVACY PUBBLICAZIONE FOTO (EMAIL, NO WHATSAPP) -->
@@ -206,7 +189,7 @@
     </div>
   </main>
 
-  <!-- LIGHTBOX MODAL A SCHERMO INTERO (ALTA RISOLUZIONE, TASTIERA & TOUCH SWIPE) -->
+  <!-- VISUALIZZAZIONE FOTO A SCHERMO INTERO -->
   <div id="lightbox-modal" onclick="if(event.target===this) window.closeLightbox()" class="fixed inset-0 z-50 hidden bg-black/95 flex flex-col justify-between p-3 sm:p-6 select-none">
     <!-- Top Bar -->
     <div class="flex items-center justify-between text-white border-b border-white/10 pb-3">
