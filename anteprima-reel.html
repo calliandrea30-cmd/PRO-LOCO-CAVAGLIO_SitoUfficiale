@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anteprima & Simulatore Reel Instagram | Pro Loco Cavaglio d'Agogna APS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    .font-display { font-family: 'Anton', sans-serif; }
+    .font-sans { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#0F1115] text-white font-sans min-h-screen flex flex-col items-center justify-center p-4 sm:p-6">
+
+  <div class="max-w-4xl w-full flex flex-col md:flex-row items-center justify-center gap-8 py-4">
+    
+    <!-- MOCKUP SMARTPHONE 9:16 REEL -->
+    <div class="relative w-[320px] sm:w-[350px] aspect-[9/16] bg-black rounded-[48px] border-[10px] border-[#2A2E39] shadow-2xl overflow-hidden flex flex-col justify-between shrink-0">
+      
+      <!-- Top Bar Instagram Reel -->
+      <div class="relative z-30 p-4 pt-5 flex items-center justify-between text-xs text-white/90 drop-shadow">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-sun text-ink font-display flex items-center justify-center text-xs">PL</div>
+          <span class="font-bold text-xs">proloco_cavaglio</span>
+          <span class="text-white/50">• Segui</span>
+        </div>
+        <div class="bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-bold text-sun">
+          Reel Ufficiale
+        </div>
+      </div>
+
+      <!-- Barra di avanzamento tempo Reel (0-38s) -->
+      <div class="absolute top-0 left-0 right-0 h-1.5 bg-white/20 z-40">
+        <div id="reel-progress" class="h-full bg-sun w-0 transition-all duration-200"></div>
+      </div>
+
+      <!-- CONTENUTI SCENE DINAMICHE -->
+      <div id="reel-viewport" class="absolute inset-0 z-10 flex flex-col justify-between p-6">
+        
+        <!-- Sfondo gradiente dinamico per scena -->
+        <div id="reel-bg" class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent transition-all duration-700"></div>
+
+        <!-- Centro: Grafica & Testo Gancio -->
+        <div class="relative z-20 my-auto text-center space-y-3 px-2">
+          <span id="reel-badge" class="inline-block bg-sun text-ink text-xs font-extrabold uppercase px-3 py-1 rounded-full shadow-lg">
+            Tradizioni • Colline Novaresi
+          </span>
+          <h2 id="reel-title" class="font-display text-3xl sm:text-4xl uppercase tracking-wide leading-tight text-white drop-shadow-md">
+            C'è qualcosa che non si può spiegare...
+          </h2>
+          <p id="reel-desc" class="text-xs sm:text-sm text-white/90 leading-relaxed font-medium drop-shadow">
+            Il profumo della festa, il sapore di un buon piatto, i volti delle persone che ci sono sempre.
+          </p>
+        </div>
+
+        <!-- Bottom Bar Instagram: Didascalia & Audio -->
+        <div class="relative z-20 pb-4 space-y-2 text-left">
+          <p id="reel-caption-sub" class="text-xs text-white/95 drop-shadow line-clamp-2">
+            <strong>proloco_cavaglio</strong> Da oggi tutta la nostra energia e le nostre feste hanno una nuova casa sul web... ❤️
+          </p>
+          <div class="flex items-center gap-2 text-[10px] text-white/70">
+            <svg class="w-3.5 h-3.5 animate-spin" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2v20m10-10H2"/></svg>
+            <span class="truncate">Audio originale • Pro Loco Cavaglio d'Agogna</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Icone laterali Instagram (Cuore, Commento, Condividi) -->
+      <div class="absolute right-3 bottom-16 z-30 flex flex-col items-center gap-4 text-white">
+        <div class="flex flex-col items-center">
+          <span class="text-xl">❤️</span>
+          <span class="text-[10px] font-bold">1.2k</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="text-xl">💬</span>
+          <span class="text-[10px] font-bold">84</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="text-xl">↗️</span>
+          <span class="text-[10px] font-bold">Invia</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PANNELLO CONTROLLI & GUIDA REGIA -->
+    <div class="flex-1 max-w-lg space-y-6">
+      <div>
+        <span class="inline-block bg-coral text-white text-[11px] font-extrabold uppercase px-3 py-1 rounded-full mb-2">
+          Storyboarding Interattivo
+        </span>
+        <h1 class="font-display text-3xl sm:text-4xl uppercase text-white leading-tight">
+          Simulatore Reel di Lancio
+        </h1>
+        <p class="text-xs sm:text-sm text-white/70 mt-1 leading-relaxed">
+          Guarda come si sviluppano i 38 secondi del video promozionale: tempi, testi a schermo e la voce narrante pensata per emozionare i cittadini di Cavaglio d'Agogna.
+        </p>
+      </div>
+
+      <!-- Controlli Player -->
+      <div class="bg-[#1A1D24] p-5 rounded-3xl border border-white/10 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold text-sun tabular-nums" id="time-display">00:00 / 00:38</span>
+          <span class="text-xs text-white/50" id="scene-display">Scena 1: Gancio Emozionale</span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button id="btn-play" onclick="togglePlay()" class="flex-1 bg-sun hover:bg-yellow-400 text-ink font-extrabold text-xs uppercase tracking-wider py-3 px-4 rounded-full transition text-center">
+            ▶ Avvia Simulazione
+          </button>
+          <button onclick="resetReel()" class="bg-white/10 hover:bg-white/20 text-white font-extrabold text-xs uppercase py-3 px-4 rounded-full transition">
+            ↺ Riavvia
+          </button>
+        </div>
+
+        <!-- Pulsanti Selettori Rapidi Scene -->
+        <div class="grid grid-cols-4 gap-2 pt-2 text-[10px] font-bold uppercase">
+          <button onclick="seekTo(0)" class="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-center transition">Scena 1<br>(0-8s)</button>
+          <button onclick="seekTo(8)" class="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-center transition">Scena 2<br>(8-18s)</button>
+          <button onclick="seekTo(18)" class="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-center transition">Scena 3<br>(18-28s)</button>
+          <button onclick="seekTo(28)" class="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-center transition">Scena 4<br>(28-38s)</button>
+        </div>
+      </div>
+
+      <!-- Riquadro Voice-Over in Tempo Reale -->
+      <div class="bg-[#1A1D24] p-5 rounded-3xl border border-white/10 space-y-2">
+        <span class="text-[10px] font-extrabold uppercase text-cobalt tracking-wider flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> Voce Narrante (Voice-Over Esatto):
+        </span>
+        <blockquote id="voiceover-text" class="text-sm italic text-white/90 leading-relaxed font-medium bg-black/30 p-4 rounded-2xl border border-white/5">
+          "Ci sono cose che non si possono spiegare a parole: il sapore di una tradizione, la fatica che diventa festa, i volti di chi c'è sempre..."
+        </blockquote>
+      </div>
+
+      <!-- Dettaglio Traccia Audio -->
+      <div class="text-xs text-white/60 bg-white/5 p-4 rounded-2xl flex items-center justify-between">
+        <span>🎵 Mood consigliato: Chitarra acustica che sfocia in un beat gioioso</span>
+        <a href="REEL_LANCIO_SITO_PRO_LOCO.md" target="_blank" class="text-sun font-bold underline">Leggi Guida DaVinci →</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const SCENES = [
+      {
+        start: 0,
+        end: 8,
+        name: "Scena 1: Il Gancio Emozionale",
+        badge: "Tradizioni • Colline Novaresi",
+        badgeBg: "bg-coral text-white",
+        title: "C'è qualcosa che non si può spiegare...",
+        desc: "Il calore del pentolone sul fuoco, le caldarroste, le mani laboriose dei volontari.",
+        voice: "«Ci sono cose che non si possono spiegare a parole: il sapore di una tradizione, la fatica che diventa festa, i volti di chi c'è sempre...»",
+        bg: "bg-gradient-to-t from-[#6B2A14] via-black/70 to-transparent"
+      },
+      {
+        start: 8,
+        end: 18,
+        name: "Scena 2: L'Energia del Paese",
+        badge: "Feste • Musica • Comunità",
+        badgeBg: "bg-hill text-white",
+        title: "A Cavaglio ogni momento è casa.",
+        desc: "I brindisi all'Oktoberfest, le serate di Cavaglio sotto le Stelle, i tramonti tra i vigneti.",
+        voice: "«A Cavaglio ogni momento insieme è un pezzo di storia che scriviamo tutti insieme. E da oggi, tutto questo ha una nuova casa...»",
+        bg: "bg-gradient-to-t from-[#2F593D] via-black/70 to-transparent"
+      },
+      {
+        start: 18,
+        end: 28,
+        name: "Scena 3: È Online il Nuovo Sito!",
+        badge: "Novità Ufficiale 🚀",
+        badgeBg: "bg-sun text-ink",
+        title: "È ONLINE IL NUOVO SITO WEB!",
+        desc: "Nuovo carosello album foto, calendario eventi in tempo reale, menù e gazzettino locale.",
+        voice: "«È online il nuovo sito ufficiale della Pro Loco Cavaglio d'Agogna! Tutti gli appuntamenti aggiornati, le gallerie fotografiche e le nostre tradizioni a portata di click.»",
+        bg: "bg-gradient-to-t from-[#1D37CC] via-black/70 to-transparent"
+      },
+      {
+        start: 28,
+        end: 38,
+        name: "Scena 4: Call to Action",
+        badge: "Vivi il Paese ❤️",
+        badgeBg: "bg-coral text-white",
+        title: "PROLOCOCAVAGLIO.IT",
+        desc: "Fatto con il cuore per chi ama Cavaglio d'Agogna. Link attivo in bio!",
+        voice: "«Fatto con il cuore, per chi ama Cavaglio d'Agogna. Vieni a scoprirlo: link in bio!»",
+        bg: "bg-gradient-to-t from-[#18191C] via-cobalt/40 to-black/80"
+      }
+    ];
+
+    let currentTime = 0;
+    const duration = 38;
+    let isPlaying = false;
+    let timer = null;
+
+    function render(t) {
+      currentTime = t;
+      document.getElementById('reel-progress').style.width = ((t / duration) * 100) + '%';
+      
+      const secs = Math.floor(t % 60).toString().padStart(2, '0');
+      document.getElementById('time-display').textContent = `00:${secs} / 00:38`;
+
+      const currentScene = SCENES.find(s => t >= s.start && t < s.end) || SCENES[SCENES.length - 1];
+
+      document.getElementById('scene-display').textContent = currentScene.name;
+      document.getElementById('reel-badge').textContent = currentScene.badge;
+      document.getElementById('reel-badge').className = `inline-block ${currentScene.badgeBg} text-xs font-extrabold uppercase px-3 py-1 rounded-full shadow-lg`;
+      document.getElementById('reel-title').textContent = currentScene.title;
+      document.getElementById('reel-desc').textContent = currentScene.desc;
+      document.getElementById('voiceover-text').textContent = currentScene.voice;
+      document.getElementById('reel-bg').className = `absolute inset-0 ${currentScene.bg} transition-all duration-700`;
+    }
+
+    function togglePlay() {
+      if (isPlaying) {
+        pause();
+      } else {
+        play();
+      }
+    }
+
+    function play() {
+      if (currentTime >= duration) currentTime = 0;
+      isPlaying = true;
+      document.getElementById('btn-play').textContent = "⏸ Metti in Pausa";
+      timer = setInterval(() => {
+        currentTime += 0.2;
+        if (currentTime >= duration) {
+          pause();
+          render(duration);
+        } else {
+          render(currentTime);
+        }
+      }, 200);
+    }
+
+    function pause() {
+      isPlaying = false;
+      document.getElementById('btn-play').textContent = "▶ Riprendi Simulazione";
+      clearInterval(timer);
+    }
+
+    function resetReel() {
+      pause();
+      render(0);
+      document.getElementById('btn-play').textContent = "▶ Avvia Simulazione";
+    }
+
+    function seekTo(sec) {
+      pause();
+      render(sec);
+      document.getElementById('btn-play').textContent = "▶ Avvia da questa scena";
+    }
+
+    render(0);
+  </script>
+</body>
+</html>
